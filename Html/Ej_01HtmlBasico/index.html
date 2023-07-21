@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Elementos básicos</title>
+  </head>
+  <body>
+    <header>
+      <h1>Primer parrafo corto (incluye el retorno de carro)</h1>
+      <h2>Segundo Parrafo corto (incluye el retorno de carro)</h2>
+      <nav>
+        <h3>Grupo de elementos de navegación</h3>
+        <ul>
+          <li><a href="https://espanol.yahoo.com/">Yahoo</a></li>
+          <li><a href="https://www.google.com/">Google</a></li>
+          <li><a href="https://www.youtube.com/">YouTube</a></li>
+        </ul>
+        <hr />
+        <a href="./OtraPaginaEnMismaVentana.html"
+          >Enlace a otra página dentro de la misma pestaña</a
+        >
+        <a href="./OtraPaginaEnNuevaPestaña.html" target="_blank"
+          >Enlace a otra página en una nueva pestaña</a
+        >
+        <a href="#OtroLugarDentro">Ancla a otro punto en esta página</a>
+        <a href="./cuestionario.html">Cuestionario</a>
+        <hr />
+        <br />
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <article>
+          <h1>Cuerpo principal del contenido</h1>
+          <p>
+            La etiqueta main es en HTML5 una etiqueta semántica. Esto quiere
+            decir que tiene que ver con el significado de lo contenido dentro de
+            ella. Define el contenido principal de la página. Únicamente puede
+            haber una sola etiqueta como ésta en todo el documento. El contenido
+            escrito aquí dentro no se repite en el resto del sitio (todo lo
+            contrario a los encabezados de la página, los menúes de navegación y
+            los pies de página). Es usado por buscadores para indexar. Conviene
+            usar aquí textos que ayuden a encontrar la página luego de procesos
+            de indexación de los buscadores.
+          </p>
+        </article>
+
+        <article>
+          <h2>Sección etiquetas semánticas estructurales más importantes:</h2>
+          <ul>
+            <li>HEADER</li>
+            <li>FOOTER</li>
+            <li>SECTION</li>
+            <li>ARTICLE</li>
+            <li>NAV</li>
+            <li>ADRESS</li>
+          </ul>
+          <p>
+            Las etiquetas semánticas estructurales están relacionadas
+            directamente con el significado del contenido y no con los estilos
+            ni las posiciones dentro del documento.
+          </p>
+        </article>
+
+        <article>
+          <h2>Reglas para etiquetas semánticas</h2>
+          <ul>
+            <li>
+              Los distintos tipos de contenido se pueden asociar a las etiquetas
+              SECTION
+            </li>
+            <li>
+              Las unidades de contenido se asocian a las etiquetas ARTICLE. O
+              sea que un SECTION anida múltiples ARTICLES.
+            </li>
+            <li>
+              Las etiquetas HEADER y FOOTER pueden ser anidadas dentro de otras
+              HEADER o FOOTER. O sea un FOOTER podría anidar otro HEADER y
+              FOOTER.
+            </li>
+            <li>
+              La etiqueta NAV debe ser única en el documento y corresponde a los
+              elementos de navegación del documento.
+            </li>
+            <li>
+              Reservar etiqueta h1 para usar dentro de etiquetas top level como
+              main, header y footer.
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <br />
+
+    <footer>
+      <section>
+        <article>
+          <h2>Sección de imágenes</h2>
+          <p>
+            En ésta sección mostraremos imagenes identificativas de nuestro
+            sitio. <br />
+            La siguiente imagen está insertada en tamaño natural
+          </p>
+          <img src="./imagen.jpg" alt="Imagen de diseño" />
+          <p>
+            La misma imagen, "Imagen de diseño" (600px x 400px), con distintos
+            atributos width: De acuerdo a la dimensión de la imagen, sólo la
+            primera no pixelará. Cada elemento img se ubica al lado de la
+            anterior hasta completar el ancho de la ventana activa (view port).
+            Todas las siguientes imágenes se verán deformadas por haber definido
+            doble parámetro de estilo (ancho y alto).
+          </p>
+          <img
+            src="./imagen.jpg"
+            style="width: 75px; height: 300px"
+            alt="Imagen de diseño"
+          />
+          <img
+            src="./imagen.jpg"
+            style="width: 150px; height: 300px"
+            alt="Imagen de diseño"
+          />
+          <img
+            src="./imagen.jpg"
+            style="width: 250px; height: 300px"
+            alt="Imagen de diseño"
+          />
+          <img
+            src="./imagen.jpg"
+            style="width: 350px; height: 300px"
+            alt="Imagen de diseño"
+          />
+          <img
+            src="./imagen.jpg"
+            style="width: 450px; height: 300px"
+            alt="Imagen de diseño"
+          />
+        </article>
+      </section>
+
+      <br />
+
+      <section>
+        <hr />
+        <h3>Sección de video</h3>
+        <video
+          src="./video.mp4"
+          style="width: 600px; height: 400px"
+          controls
+        ></video>
+        <br />
+        <h3 id="OtroLugarDentro">Anclajes</h3>
+        <p>Punto de anclado.</p>
+        <address>
+          <h1>Datos del alumno</h1>
+          <p>
+            Apellido: Pontoriero <br />
+            Nombre: Brian <br />
+            Legajo: 26758 <br />
+            E-mail: <a href="https://mail.google.com/mail/u/0/#inbox?compose=new">bpontoriero758@alumnos.frh.utn.edu.ar</a>
+          </p>
+        </address>
+      </section>
+    </footer>
+  </body>
+</html>
