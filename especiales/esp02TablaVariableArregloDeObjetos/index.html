@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla variable arreglo de objetos</title>
+    <style>
+        html,
+        body {
+          height: 100%;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+        }
+        * {
+          font-size: 18px;
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+        h1 {
+          font-size: 1.3em;
+          margin-top: 1.4%;
+          margin-left: 30%;
+          float: left;
+        }
+        header div{
+            height: 80%;
+            width: 30%;
+            float: right;
+            margin-top: 0.5%;
+        }
+        button{
+            width: 49%;
+            height: 100%;
+            background-color: whitesmoke;
+            margin-right: 0.5%;
+            float: left;
+        }
+        header {
+          height: 10%;
+          width: 100%;
+          background-color: lightyellow;
+        }
+  
+        main {
+          width: 100%;
+          height: 80%;
+          overflow: auto;
+          background-color:darkgray;
+        }
+  
+        footer {
+          background-color: lightyellow;
+          width: 100%;
+          height: 10%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+  
+        table {
+          width: 100%;
+          height: 100%;
+          border-collapse: collapse;
+        }
+        th {
+          background-color: coral;
+          border-style: solid;
+          border-color: rgb(216, 120, 56);
+          border-width: 2px;
+          padding: 1%;
+        }
+        td {
+          padding: 1.5%;
+        }
+        
+        tbody tr:nth-child(odd) {
+          background: rgba(0, 0, 0, 0.2);
+        }
+
+        [campo-dato="codigo"] {
+            width: 12%;
+        }
+
+        [campo-dato="um"] {
+            width: 12%;
+        }
+
+        @media (max-width: 1200px) {
+          [campo-dato="saldo"] {
+            display: none;
+          }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Artículos</h1>
+        <div>
+            <button id="cargar">Cargar datos</button>
+            <button id="vaciar">Vaciar datos</button>
+        </div>
+    </header>
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th campo-dato="codigo">Cód. Art</th>
+                    <th campo-dato="familia">Familia</th>
+                    <th campo-dato="um">UM</th>
+                    <th campo-dato="descripcion">Descripción</th>
+                    <th campo-dato="fecha">Fecha alta</th>
+                    <th campo-dato="saldo">Saldo stock</th>
+                </tr>
+            </thead>
+            <tbody id="tbDatos">
+            </tbody>
+        </table>
+    </main>
+    <footer>Pie</footer>
+    <script src="../jQuery.js"></script>
+    <script>
+        var textoArticulos = '{'+
+            '"articulos": ['+
+                '{'+
+                    '"codArt": "CAM01",'+
+                    '"familia": "ROPA",'+
+                    '"descripcion": "Camiseta estampada de algodón",'+
+                    '"um": "TALLE",'+
+                    '"fechaAlta": "20-05-2023",'+
+                    '"saldoStock": 5300'+
+                '},'+
+                '{'+
+                    '"codArt": "PAN02",'+
+                    '"familia": "ALIMENTOS",'+
+                    '"descripcion": "Pan integral sin gluten",'+
+                    '"um": "GR",'+
+                    '"fechaAlta": "10-06-2023",'+
+                    '"saldoStock": 950'+
+                '},'+
+                '{'+
+                    '"codArt": "LIB03",'+
+                    '"familia": "LIBROS",'+
+                    '"descripcion": "Libro de ciencia ficción",'+
+                    '"um": "EJEMPLAR",'+
+                    '"fechaAlta": "05-04-2023",'+
+                    '"saldoStock": 7600'+
+                '},'+
+                '{'+
+                    '"codArt": "ZAP04",'+
+                    '"familia": "CALZADO",'+
+                    '"descripcion": "Zapatos de cuero para hombre",'+
+                    '"um": "NÚMERO",'+
+                    '"fechaAlta": "15-07-2023",'+
+                    '"saldoStock": 20000'+
+                '},'+
+                '{'+
+                    '"codArt": "CD05",'+
+                    '"familia": "MÚSICA",'+
+                    '"descripcion": "CD de música pop",'+
+                    '"um": "UNIDAD",'+
+                    '"fechaAlta": "01-08-2023",'+
+                    '"saldoStock": 3500'+
+                '}'+
+            ']'+
+        '}';
+
+        var objetoArticulos;
+
+        objetoJSON = JSON.parse(textoArticulos);
+
+        $("#cargar").click(function(){
+            creaFilas();
+        });
+
+        $("#vaciar").click(function(){
+            $("#tbDatos").empty();
+        });
+        
+        function creaFilas(){
+            objetoJSON.articulos.forEach(function(argValor, argIndice){
+                var objTr= document.createElement("tr");
+                var objTd=document.createElement("td");
+
+                objTd.setAttribute("campo-dato","codigo");
+                objTd.innerHTML=argValor.codArt;
+                objTr.appendChild(objTd);
+
+                objTd=document.createElement("td");
+                objTd.setAttribute("campo-dato","familia");
+                objTd.innerHTML=argValor.familia;
+                objTr.appendChild(objTd);
+
+                objTd=document.createElement("td");
+                objTd.setAttribute("campo-dato","um");
+                objTd.innerHTML=argValor.um;
+                objTr.appendChild(objTd);
+
+                objTd=document.createElement("td");
+                objTd.setAttribute("campo-dato","descripcion");
+                objTd.innerHTML=argValor.descripcion;
+                objTr.appendChild(objTd);
+
+                objTd=document.createElement("td");
+                objTd.setAttribute("campo-dato","fechaAlta");
+                objTd.innerHTML=argValor.fechaAlta;
+                objTr.appendChild(objTd);
+
+                objTd=document.createElement("td");
+                objTd.setAttribute("campo-dato","saldo");
+                objTd.innerHTML=argValor.saldoStock;
+                objTr.appendChild(objTd);
+
+                document.getElementById("tbDatos").appendChild(objTr);
+            });
+        }
+    </script>
+</body>
+</html>

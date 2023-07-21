@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario variable arreglo de objetos</title>
+    <style>
+        html, body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header, footer{
+            background-color: lightgray;
+            width: 100%;
+            height: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        main{
+            background-color: lightyellow;
+            width: 100%;
+            height: 80%;
+        }
+        form{
+            height: 100%;
+            width: 100%;
+        }
+        label{
+            font-size: 30px;
+            display: block;
+            margin-bottom: 2%;
+        }
+        input, select, option{
+            width: 70%;
+            height: 40%;
+            font-size: 25px;
+        }
+        button{
+            width: 30%;
+            height: 10%;
+            font-size: 25px;
+            margin-left: 6%;
+            margin-top: 4%;
+        }
+        div{
+            width: 50%;
+            height: 33%;
+            float: left;
+            padding-left: 4%;
+            padding-top: 2.5%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Formulario para ALTA - Maestro de Artículos</h2>
+    </header>
+    <main>
+        <form id="miform">
+            <div>
+                <label for="art">Cod art:</label>
+                <input type="text" id="art" name="articulo" required>
+            </div>
+            <div>
+                <label for="flia">Familia de artículo:</label>
+                <select name="familia" id="flia" required>
+                </select>
+            </div>
+            <div>
+                <label for="">Descripción:</label>
+                <input type="text" id="desc" name="descripcion" required>
+            </div>
+            <div>
+                <label for="fecha">Fecha Alta:</label>
+                <input type="date" id="fecha" name="fecha" required>
+            </div>
+            <div>
+                <label for="saldo">Saldo stock:</label>
+                <input type="number" id="saldo" name="saldo" required>
+            </div>
+            <button id="enviar">ENVIAR</button>
+        </form>
+    </main>
+    <footer>
+        <h2>Pie del formulario</h2>
+    </footer>
+    <script src="../jQuery.js"></script>
+    <script>
+        var textoFamilias = '{'+
+            '"familias": ['+
+                '{'+
+                '"nombre": "ROPA",'+
+                '"descripcion": "Artículos de vestir"'+
+                '},'+
+                '{'+
+                '"nombre": "ALIMENTOS",'+
+                '"descripcion": "Productos comestibles"'+
+                '},'+
+                '{'+
+                '"nombre": "LIBROS",'+
+                '"descripcion": "Publicaciones impresas"'+
+                '},'+
+                '{'+
+                '"nombre": "CALZADO",'+
+                '"descripcion": "Zapatos y calzado"'+
+                '},'+
+                '{'+
+                '"nombre": "MÚSICA",'+
+                '"descripcion": "Grabaciones musicales"'+
+                '}'+
+            ']'+
+        '}';
+
+        var objetoJSON;
+
+        objetoJSON = JSON.parse(textoFamilias);
+        
+        creaOpciones();
+
+        $("#enviar").click(function(){
+            if(document.getElementById("miform").checkValidity()==true){
+                var confirmar = confirm("¿Estas seguro de enviar?");
+
+                if(confirmar == true){
+                    document.getElementById("miform").method="get";
+                    document.getElementById("miform").action="./respuesta.html";
+                    document.getElementById("miform").submit();
+                }
+                else{
+                    document.getElementById("miform").reset();
+                }
+            }
+        });
+
+        function creaOpciones(){
+            objetoJSON.familias.forEach(function(argValor, argIndice){
+                var objOpcion = document.createElement("option");
+                objOpcion.innerHTML = argValor.nombre;
+                document.getElementById("flia").appendChild(objOpcion);
+            });
+        }
+    </script>
+</body>
+</html>

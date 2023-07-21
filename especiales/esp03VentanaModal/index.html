@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventana modal</title>
+    <style>
+        html, body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #contenedor{
+            width: 100%;
+            height: 100%;
+            background-color: lightblue;
+            padding-left: 0.5%;
+        }
+        #abrir{
+            background-color: darkgray;
+            border-radius: 5px;
+            box-shadow: 2px 2px 3px black;
+            color: white;
+            width: 10%;
+            height: 5%;
+            margin: 1%;
+        }
+        #ventanaModal{
+            position: fixed;
+            top: 25%;
+            left: 25%;
+            width: 50%;
+            height: 50%;
+            background-color: lightgray;
+        }
+        #encabezado{
+            width: 100%;
+            height: 10%;
+            background-color: darkgray;
+        }
+        #encabezado h2{
+            float: left;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding-left: 1%;
+        }
+        #cerrar{
+            float:right;
+            font-size: 20px;
+            background-color:rgba(211, 211, 211, 0.486);
+            color: red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: none;
+            border-radius: 0;
+            border: none;
+            width: 5%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #txt1, #txt2{
+            height: 10%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #miform{
+            height: 70%;
+            width: 97%;
+            margin-left: 1.5%;
+            margin-right: 1.5%;
+            background-color: lightyellow;
+            padding: 2%;
+        }
+        #miform label{
+            font-size: 20px;
+            display: block;
+            margin-bottom: 2%;
+        }
+        #miform input, select, option{
+            width: 70%;
+            height: 40%;
+            font-size: 20px;
+        }
+        #miform button{
+            width: 30%;
+            height: 10%;
+            font-size: 20px;
+            margin-left: 6%;
+            margin-top: 4%;
+        }
+        #miform div{
+            width: 50%;
+            height: 33%;
+            float: left;
+            padding-left: 10%;
+        }
+        .ventanaModalApagado {
+        visibility:hidden;
+        }
+        .ventanaModalPrendido {
+        visibility:visible;
+        }
+        .contenedorActivo {
+        opacity:1;
+        pointer-events: auto;
+        }
+        .contenedorDesactivado {
+        opacity:0.3;
+        pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor">
+        <h1>Esto es el div contendor</h1>
+        <button id="abrir">Abre DIV modal</button>
+        <h2>Ayudas para el ejercicio</h2>
+        El div contenedor deberá ser desactivado cuando se active la ventana modal <br>
+        Desactivar el contenedor podría ser darle transparencia y deshabilitar todos sus botones. <br>
+        Desactivado: <br>
+        pointer-events: none <br>
+        opacity: 0.3 <br>
+        Activado: <br>
+        pointer-events: auto <br>
+        opacity: 1 <br>
+    </div>
+    <div id="ventanaModal">
+        <div id="encabezado">
+            <h2>Encabezado modal</h2>
+            <button id="cerrar">X</button>
+        </div>
+        <div id="txt1">
+            <h2>Formulario para ALTA - Maestro de Artículos</h2>
+        </div>
+        <form id="miform">
+            <div>
+                <label for="art">Cod art:</label>
+                <input type="text" id="art" name="articulo" required>
+            </div>
+            <div>
+                <label for="flia">Familia de artículo:</label>
+                <select name="familia" id="flia" required>
+                </select>
+            </div>
+            <div>
+                <label for="">Descripción:</label>
+                <input type="text" id="desc" name="descripcion" required>
+            </div>
+            <div>
+                <label for="fecha">Fecha Alta:</label>
+                <input type="date" id="fecha" name="fecha" required>
+            </div>
+            <div>
+                <label for="saldo">Saldo stock:</label>
+                <input type="number" id="saldo" name="saldo" required>
+            </div>
+            <button id="enviar">ENVIAR</button>
+        </form>
+        <div id="txt2">
+            <h2>Pie del formulario</h2>
+        </div>
+    </div>
+    <script src="../jQuery.js"></script>
+    <script>
+        var textoFamilias = '{'+
+            '"familias": ['+
+                '{'+
+                '"nombre": "ROPA",'+
+                '"descripcion": "Artículos de vestir"'+
+                '},'+
+                '{'+
+                '"nombre": "ALIMENTOS",'+
+                '"descripcion": "Productos comestibles"'+
+                '},'+
+                '{'+
+                '"nombre": "LIBROS",'+
+                '"descripcion": "Publicaciones impresas"'+
+                '},'+
+                '{'+
+                '"nombre": "CALZADO",'+
+                '"descripcion": "Zapatos y calzado"'+
+                '},'+
+                '{'+
+                '"nombre": "MÚSICA",'+
+                '"descripcion": "Grabaciones musicales"'+
+                '}'+
+            ']'+
+        '}';
+
+        var objetoJSON;
+
+        objetoJSON = JSON.parse(textoFamilias);
+        
+        creaOpciones();
+
+        $("#enviar").click(function(){
+            if(document.getElementById("miform").checkValidity()==true){
+                var confirmar = confirm("¿Estas seguro de enviar?");
+
+                if(confirmar == true){
+                    document.getElementById("miform").method="get";
+                    document.getElementById("miform").action="../esp01FormVariableArregloDeObjetos/respuesta.html";
+                    document.getElementById("miform").submit();
+                }
+                else{
+                    document.getElementById("miform").reset();
+                }
+            }
+        });
+
+        function creaOpciones(){
+            objetoJSON.familias.forEach(function(argValor, argIndice){
+                var objOpcion = document.createElement("option");
+                objOpcion.innerHTML = argValor.nombre;
+                document.getElementById("flia").appendChild(objOpcion);
+            });
+        }
+
+        $(document).ready(function() {
+            $("#contenedor").attr("class","contenedorActivo");
+            $("#ventanaModal").attr("class","ventanaModalApagado");
+        });
+
+        $("#abrir").click(function(){
+            $("#contenedor").attr("class","contenedorDesactivado");
+            $("#ventanaModal").attr("class","ventanaModalPrendido");
+        });
+
+        $("#cerrar").click(function(){
+            $("#contenedor").attr("class","contenedorActivo");
+            $("#ventanaModal").attr("class","ventanaModalApagado");
+        });
+    </script>
+</body>
+</html>
