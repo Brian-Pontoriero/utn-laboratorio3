@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variables objeto dato</title>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      #adicionar{
+        background-color: lightblue;
+        margin: 2%;
+      }
+      #control{
+        background-color: lightyellow;
+        margin: 2%;
+      }
+      #fecha{
+        display: block;
+      }
+      label {
+        display: block;
+      }
+      input {
+        margin-bottom: 1%;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Consignas del ejercicio</h1>
+      <h3>Declarar y hacer uso de Objetos de dato (datos de tipo objeto).</h3>
+      <h3>Cargar datos de 2 personas a un array por programa.</h3>
+      <h3>
+        Dejar de usar la función prompt() para el ingreso de datos. Armar un
+        contenedor para el ingreso de datos desde consola (solo inputs sin
+        formulario).
+      </h3>
+      <h3>
+        Dejar de usar document.write() y escribir contenido dentro de un
+        elemento html (puede ser un div).
+      </h3>
+      <h3>
+        Dos botones para llamar a dos funciones. Una para cargar un nuevo objeto
+        de dato por teclado y otra para mostrar en formato de tabla el array
+        completo de elementos con su longitud.
+      </h3>
+      <h3>
+        Un tercer procedimiento para ocultar el elemento de presentación (usando
+        el parámetro de estilo display:none).
+      </h3>
+    </header>
+    <main>
+      <div id="adicionar">
+        <h2>Adicionar persona</h2>
+        <label for="nom">Nombre:</label
+        ><input type="text" id="nom" title="Complete este campo" required/>
+        <label for="ape">Apellido:</label
+        ><input type="text" id="ape" title="Complete este campo" required/>
+        <label for="fecha">Fecha de nacimiento:</label
+        ><input type="text" id="fecha" title="Complete este campo: ff/mm/aaaa" required/>
+        <button id="crear">Crear persona</button>
+        <button id="borrar">Borrar display</button>
+      </div>
+    </main>
+    <footer>
+      <div id="control">
+        <h2>Control</h2>
+        <button id="lista">Lista personas</button>
+        <button id="ocultar">Ocultar presentación</button>
+      </div>
+      <div id="presentacion">
+      </div>
+    </footer>
+  </body>
+  <script>
+    var objetoPersona = {nombre: "Brian", apellido: "Pontoriero", fechaNac: "19/04/1993"};
+    var arregloPersonas = [objetoPersona];
+    
+    arregloPersonas.push({
+      nombre:"Nikola",
+      apellido:"Tesla",
+      fechaNac:"10/07/1856",
+    });
+    
+    var objetoPersonas = {personas: arregloPersonas}; /*No lo utilicé en el dom*/
+    var texto;
+
+    document.getElementById("crear").onclick=function(){
+      var inputNombre = document.getElementById("nom");
+      var inputApellido = document.getElementById("ape");
+      var inputFechaNac = document.getElementById("fecha");
+
+      if(inputNombre.checkValidity()==true && inputApellido.checkValidity()==true && inputFechaNac.checkValidity()==true) {
+        arregloPersonas.push({
+          nombre: document.getElementById("nom").value,
+          apellido: document.getElementById("ape").value,
+          fechaNac: document.getElementById("fecha").value,
+        });
+
+        texto = "<h1>Presentación</h1>";
+        texto = texto + "<table style= 'border-collapse:collapse; border:solid'>";
+        arregloPersonas.forEach(function(item, indice){
+          texto = texto + "<tr>";
+          texto = texto + "<td style='border:solid'>" + item.nombre + "</td>";
+          texto = texto + "<td style='border:solid'>" + item.apellido + "</td>";
+          texto = texto + "<td style='border:solid'>" + item.fechaNac + "</td>";
+          texto = texto + "</tr>";
+        });
+        texto = texto + "</table>";
+        texto = texto + "<h4>Longitud del arreglo de objetos: " + arregloPersonas.length + "</h4>";
+        document.getElementById("presentacion").innerHTML=texto;
+        document.getElementById("presentacion").style.display="block";
+      }
+      else{
+        alert("Por favor, complete todos los campos correctamente.");
+      }
+    }
+
+    document.getElementById("borrar").onclick=function(){
+      document.getElementById("nom").value = "";
+      document.getElementById("ape").value = "";
+      document.getElementById("fecha").value = "";
+    }
+
+    document.getElementById("lista").onclick=function(){
+      texto = "<h1>Presentación</h1>";
+      texto = texto + "<table style= 'border-collapse:collapse; border:solid'>";
+      arregloPersonas.forEach(function(item, indice){
+        texto = texto + "<tr>";
+        texto = texto + "<td style='border:solid'>" + item.nombre + "</td>";
+        texto = texto + "<td style='border:solid'>" + item.apellido + "</td>";
+        texto = texto + "<td style='border:solid'>" + item.fechaNac + "</td>";
+        texto = texto + "</tr>";
+      });
+      texto = texto + "</table>";
+      texto = texto + "<h4>Longitud del arreglo de objetos: " + arregloPersonas.length + "</h4>";
+      document.getElementById("presentacion").innerHTML=texto;
+      document.getElementById("presentacion").style.display="block";
+    }
+
+    document.getElementById("ocultar").onclick=function(){
+      document.getElementById("presentacion").style.display="none";
+    }
+  </script>
+</html>

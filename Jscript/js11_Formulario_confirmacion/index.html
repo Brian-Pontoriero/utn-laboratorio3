@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de confirmación</title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        form{
+            background-color: lightblue;
+            margin-left: 10%;
+            margin-right: 10%;
+            width: 80%;
+            height: 40%;
+        }
+        input,label{
+            display: block;
+            margin-left: 2%;
+        }
+        button{
+            margin-top: 9%;
+        }
+        #blanquea{
+            margin-left: 42%;
+        }
+        h2{
+            margin-bottom: 2%;
+        }
+    </style>
+</head>
+<body>
+    <form id="miForm">
+        <h2>Confirmación de envío y de reset</h2>
+        <label for="nom">Nombre:</label>
+        <input type="text" id="nom" name="nombre" required>
+        <label for="ape">Apellido:</label>
+        <input type="text" id="ape" name="apellido" required>
+        <button id="blanquea">Blanquear</button>
+        <button id="envia">Enviar</button>
+    </form>
+    <script>
+        document.getElementById("envia").onclick=function(){
+    
+            if(document.getElementById("miForm").checkValidity()==true){
+                var confirmar = confirm("¿Estas seguro de enviar?");
+    
+                if(confirmar == true){
+                    document.getElementById("miForm").method="get";
+                    document.getElementById("miForm").action="./respuestaFormulario.html";
+                    document.getElementById("miForm").submit();
+                }
+                else{
+                    document.getElementById("miForm").reset();
+                }
+            }
+        }
+
+        document.getElementById("blanquea").onclick=function(){
+            document.getElementById("miForm").reset();
+        }
+    </script>
+</body>
+
+</html>

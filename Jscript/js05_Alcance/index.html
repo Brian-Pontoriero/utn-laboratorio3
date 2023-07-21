@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcance</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+        button{            
+            height: 4%;
+            width: 30%;
+            margin-top: 1%;
+        }
+    </style>
+</head>
+<body>
+    <button
+        id="incorrecto" 
+        title="Inicializa variable global desde adentro de una función con declaración var"
+        >
+        Inicialización incorrecta
+    </button>
+    <button
+        id="correcto"
+        title="Inicializa variable global desde adentro de una función sin declaración var"
+    >
+        Inicialización correcta
+    </button>
+    <button
+        id = "muestraValor" 
+        title="Muestra valor de la variable ingresada"
+        >
+        Mostrar variable global
+    </button>
+
+    <script>
+        document.getElementById("incorrecto").onclick=function(){
+            var variable = prompt("Ingrese valor para la variable global: ");
+            alert("El valor de la variable local ingresada es: " + variable);
+            alert("El tipo de la variable local ingresada es: " + typeof variable);
+        }
+
+        document.getElementById("correcto").onclick=function(){
+            variable = prompt ("Ingrese valor para la variable global: ");
+            alert("El valor de la variable global es: " + variable);
+            alert("El tipo de la variable global es: " + typeof variable);
+        }
+
+        document.getElementById("muestraValor").onclick=function(){
+
+            if(typeof variable == "undefined"){
+                alert("La variable global no ha sido asignada");
+            }
+            else{
+                alert("El valor de la variable global es: " + variable);
+                alert("El tipo de la variable global es: " + typeof variable);
+            }
+        }
+    </script>
+</body>
+</html>

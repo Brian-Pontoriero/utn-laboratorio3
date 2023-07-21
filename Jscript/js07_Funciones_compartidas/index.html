@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones compartidas</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,body{
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .divGris{
+            height: 45%;
+            width: 50%;
+            background-color: lightgray;
+            margin-left: 25%;
+            margin-right: 25%;
+            margin-top: 2%;
+            padding-top: 1%;
+            padding-bottom: 1%;
+        }
+        .divCeleste{
+            background-color: lightblue;
+            width: 90%;
+            height: 60%;
+            margin-left: 5%;
+            margin-right: 5%;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .divAmarillo{
+            background-color: lightyellow;
+            width: 90%;
+            height: 40%;
+            margin-left: 5%;
+            margin-right: 5%;
+            display: block;
+            float: left;
+            padding-bottom: 1%;
+            padding-top: 1%;
+            padding-left: 20%;
+        }
+        input{
+            width: 100%;
+            height: 17%;
+            text-align: right;
+        }
+        .divCeleste button{
+            height: 14%;
+            width: 20%;
+            margin-right: 2.6%;
+            margin-left: 2.6%;
+        }
+        .divAmarillo button{
+            height: 35%;
+            width: 35%;
+            margin-bottom: 0.5%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class = "divGris">
+        <div class="divCeleste">
+            <input type="text" id="operador">
+            <button id="uno">1</button>
+            <button id="dos">2</button>
+            <button id="tres">3</button>
+            <button id="cuatro">4</button>
+            <button id="cinco">5</button>
+            <button id="seis">6</button>
+            <button id="siete">7</button>
+            <button id="ocho">8</button>
+            <button id="nueve">9</button>
+            <button id="cero">0</button>
+        </div>
+        <div class="divAmarillo">
+            <button id="sumar">+</button>
+            <button id="mostrar">Muestra Acumulador</button>
+            <button id="bAcumulador">Borra Acumulador</button>
+            <button id="bDisplay">Borra Display</button>
+        </div>
+    </div>
+    <script>
+        acumulador=0;
+
+        document.getElementById("uno").onclick=function(){
+            document.getElementById("operador").value = document.getElementById("operador").value + "1";
+        }
+
+        document.getElementById("dos").onclick=function(){
+            document.getElementById("operador").value = document.getElementById("operador").value + "2";
+        }
+
+        document.getElementById("tres").onclick=function(){
+            document.getElementById("operador").value = document.getElementById("operador").value + "3";
+        }
+
+        document.getElementById("cuatro").onclick=function(){
+            document.getElementById("operador").value = document.getElementById("operador").value + "4";
+        }
+        
+        document.getElementById("cinco").onclick=function(){
+            document.getElementById("operador").value = document.getElementById("operador").value + "5";
+        }
+
+        document.getElementById("seis").onclick=function(){
+            document.getElementById("operador").value = document.getElementById("operador").value + "6";
+        }
+
+        document.getElementById("siete").onclick=function(){
+            document.getElementById("operador").value = document.getElementById("operador").value + "7";
+        }
+
+        document.getElementById("ocho").onclick=function(){
+            document.getElementById("operador").value = document.getElementById("operador").value + "8";
+        }
+
+        document.getElementById("nueve").onclick=function(){
+            document.getElementById("operador").value = document.getElementById("operador").value + "9";
+        }
+
+        document.getElementById("cero").onclick=function(){
+            document.getElementById("operador").value = document.getElementById("operador").value + "0";
+        }
+
+        document.getElementById("mostrar").onclick=function(){
+            alert(acumulador);
+        }
+
+        document.getElementById("bDisplay").onclick=function(){
+            document.getElementById("operador").value="";
+        }
+
+        document.getElementById("sumar").onclick=function(){
+            acumulador = acumulador + parseInt(document.getElementById("operador").value);
+            document.getElementById("operador").value="";
+        }
+
+        document.getElementById("bAcumulador").onclick=function(){
+            acumulador = 0;
+            document.getElementById("operador").value="";
+        }
+    </script>
+</body>
+</html>

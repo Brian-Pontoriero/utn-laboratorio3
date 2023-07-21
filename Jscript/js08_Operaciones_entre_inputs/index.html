@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operaciones entre inputs</title>
+    <style>
+        html, body{
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header{
+            text-align: center;
+            margin-top: 1%;
+            margin-bottom: 1%;
+        }
+        main{
+            background-color: lightblue;
+        }
+        label{
+            margin-left: 5%;
+        }
+        input{
+            margin-left: 10%;
+        }
+        #resultado{
+            margin-left: 9.85%;
+        }
+        button{
+            margin-top: 1%;
+        }
+        #suma{
+            margin-left: 1%;
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h3>
+        Introducir un valor en los cuadros de texto y luego pulsar el boton para
+        ejecutar la función correspondiente.
+      </h3>
+    </header>
+    <main>
+        <div><label for="e1">Entrada 1:</label><input type="text" id="e1"></div>
+        <div><label for="e2">Entrada 2:</label><input type="text" id="e2"></div>
+        <div><label for="e3">Entrada 3:</label><input type="text" id="e3"></div>
+        <label for="resultado">Resultado:</label><input type="text" id="resultado">
+    </main>
+    <footer>
+        <button id="suma">Suma</button>
+        <button id="prom">Promedio</button>
+        <button id="mayor">Mayor</button>
+    </footer>
+  </body>
+  <script>
+    var op1, op2, op3;
+
+    document.getElementById("suma").onclick=function(){
+        op1 = parseInt(document.getElementById("e1").value);
+        op2 = parseInt(document.getElementById("e2").value);
+        op3 = parseInt(document.getElementById("e3").value);
+
+        document.getElementById("resultado").value = op1 + op2 + op3;
+    }
+
+    document.getElementById("prom").onclick=function(){
+        op1 = parseInt(document.getElementById("e1").value);
+        op2 = parseInt(document.getElementById("e2").value);
+        op3 = parseInt(document.getElementById("e3").value);
+
+        document.getElementById("resultado").value = (op1 + op2 + op3) / 3;
+    }
+
+    document.getElementById("mayor").onclick=function(){
+        op1 = parseInt(document.getElementById("e1").value);
+        op2 = parseInt(document.getElementById("e2").value);
+        op3 = parseInt(document.getElementById("e3").value);
+
+        if(op1>op2 && op1>op3){
+            document.getElementById("resultado").value = op1;
+        }
+        else if(op2>op1 && op2>op3){
+            document.getElementById("resultado").value = op2;
+        }
+        else{
+            document.getElementById("resultado").value = op3;
+        }
+    }
+  </script>
+</html>

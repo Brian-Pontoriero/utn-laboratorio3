@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operaciones sobre Input</title>
+  </head>
+  <body>
+    <header>
+      <h2>
+        Introducir un valor en el cuadro de texto y luego pulsar el boton para
+        ejecutar el procedimiento correspondiente.
+      </h2>
+    </header>
+    <main>
+        <input type="text" id="operador">
+        <button id="mostrar">
+            Muestra valor
+        </button>
+        <button id="sumar">
+            Suma 1
+        </button>
+        <button id="cuadrado">
+            X**2
+        </button>
+        <button id="multiplicar">
+            Multiplica *2
+        </button>
+        <button id="exponente">
+            2**X
+        </button>
+        <script>
+            document.getElementById("mostrar").onclick=function(){
+                alert(document.getElementById("operador").value);
+            }
+
+            document.getElementById("sumar").onclick=function(){
+                var valor;
+
+                valor = parseInt(document.getElementById("operador").value);
+                valor += 1;
+
+                document.getElementById("operador").value = valor;
+            }
+
+            document.getElementById("cuadrado").onclick=function(){
+                var valor;
+
+                valor = parseInt(document.getElementById("operador").value);
+                valor = valor * valor;
+
+                document.getElementById("operador").value = valor;
+            }
+
+            document.getElementById("multiplicar").onclick=function(){
+                var valor;
+
+                valor = parseInt(document.getElementById("operador").value);
+                valor = valor * 2;
+
+                document.getElementById("operador").value = valor;
+            }
+
+            document.getElementById("exponente").onclick=function(){
+                var valor;
+
+                valor = parseInt(document.getElementById("operador").value);
+                valor = 2**valor;
+
+                document.getElementById("operador").value = valor;
+            }
+        </script>
+    </main>
+    <footer></footer>
+  </body>
+</html>

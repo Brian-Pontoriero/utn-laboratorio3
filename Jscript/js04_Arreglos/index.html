@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arreglos</title>
+  </head>
+  <body>
+    <header>
+      <h1>Variables Multidimensionales</h1>
+      <h1>Array de índice numérico</h1>
+    </header>
+    <main>
+      <script>
+        var arregloFrutas = [];
+
+        document.write(
+          "<h3>Tipo de arregloFrutas: " + typeof arregloFrutas + "</h3>"
+        );
+
+        arregloFrutas = ["banana", "manzana"];
+        arregloFrutas.push(
+          prompt(
+            "El arregloFrutas ya tiene dos elementos asignados por programa (banana y manzana), agregue el tercer elemento con índice numérico."
+          )
+        );
+
+        document.write(
+          "<h3>Primer elemento cargado desde programa: " +
+            arregloFrutas[0] +
+            "</h3>"
+        );
+        document.write(
+          "<h3>Segundo elemento cargado desde programa: " +
+            arregloFrutas[1] +
+            "</h3>"
+        );
+        document.write(
+          "<h3>Tercer elemento cargado desde teclado: " +
+            arregloFrutas[2] +
+            "</h3>"
+        );
+      </script>
+    </main>
+  </body>
+</html>

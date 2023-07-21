@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conmutación dinámica de clase</title>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        h2,h3{
+            font-family:Georgia, 'Times New Roman', Times, serif;
+        }
+        div{
+            padding-left: 2%;
+            width: 21%;
+            height: 45%;
+        }
+        button{
+            margin-top: 2%;
+        }
+        #Btn1{
+            margin-left: 1%;
+        }
+        .estilo1{
+            background-color:aquamarine;
+            width: 21%;
+            height: 45%;
+            border: solid;
+            border-width: 3.5px;
+            padding-top: 2%;
+            margin-top: 1%;
+            margin-left: 0.5%;
+        }
+        .estilo1 ul{
+            list-style-type: square;
+        }
+        .estilo2 {
+            background-color:lightsteelblue;
+            color: blue;
+            width: 21%;
+            height: 45%;
+            border: solid;
+            border-width: 3.5px;
+            padding-top: 2%;
+            margin-top: 1%;
+            margin-left: 0.5%;
+        }
+        .estilo2 ul{
+            list-style:circle;
+        }
+        .estilo3{
+            background-color:olive;
+            color: white;
+            width: 21%;
+            height: 45%;
+            border: solid;
+            border-width: 3.5px;
+            border-color: red;
+            padding-top: 2%;
+            margin-top: 1%;
+            margin-left: 0.5%;
+        }
+        .estilo3 ul{
+            list-style-type: lower-latin;
+        }
+        .estilo4{
+            background-color:lightgreen;
+            color: green;
+            width: 21%;
+            height: 45%;
+            border: solid;
+            border-width: 3.5px;
+            padding-top: 2%;
+            margin-top: 1%;
+            margin-left: 0.5%;
+        }
+    </style>
+</head>
+<body>
+    <h2>Ejemplo de cambios de estilo dinámicamente</h2>
+    <div id="caja">
+        <h3>Lista con estilo</h3>
+        <ul id="lista">
+            <li>Texto1</li>
+            <li>Texto2</li>
+            <li>Texto3</li>
+        </ul>
+    </div>
+    <button id="Btn1">Tipo 1</button>
+    <button id="Btn2">Tipo 2</button>
+    <button id="Btn3">Tipo 3</button>
+    <button id="Btn4">Tipo 4</button>
+</body>
+<script>
+    document.getElementById("Btn1").onclick=function(){
+        document.getElementById("caja").className="estilo1";
+    }
+    document.getElementById("Btn2").onclick=function(){
+        document.getElementById("caja").className="estilo2";
+    }
+    document.getElementById("Btn3").onclick=function(){
+        document.getElementById("caja").className="estilo3";
+    }
+    document.getElementById("Btn4").onclick=function(){
+        document.getElementById("caja").className="estilo4";
+    }
+</script>
+</html>
