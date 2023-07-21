@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0; 
+        }
+        #contenedor{
+            margin-left: 6%;
+            margin-right: 6%;
+            margin-top: 1%;
+            width: 88%;
+            height: 75%;
+        }
+        #contenedor div{
+            float: left;
+            height: 50%;
+        }
+        .gris{
+            width: 30%;
+            background-color: darkgray;
+        }
+        #botonDisparador{
+            width: 30%;
+            background-color: blue;
+            color: white;
+        }
+        #resultado{
+            width: 40%;
+            background-color: yellow;
+        }
+        #estado{
+            width: 30%;
+            background-color:gray;
+        }
+        .celeste{
+            width: 70%;
+            background-color: lightblue;
+        }
+        h2{
+            margin-top: 5%;
+            margin-left: 2%;
+            font-size: 30px;
+        }
+        h3{
+            margin-top: 10%;
+            margin-left: 2%;
+            font-size: 22px;
+        }
+        h4{
+            margin-left: 2%;
+        }
+        input{
+            margin-left: 2%;
+            margin-top: 5%;
+        }
+        .contenedor{
+            width: 35%;
+            height: 35%;
+            background-color: white;
+            margin-top: 10%;
+            margin-left: 32.5%;
+            margin-right: 32.5%;
+            display: none;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        #botonDisparador:hover{
+            .contenedor{
+                display: block;
+            }
+            cursor: pointer;
+        }
+        @media(max-width: 800px){
+            input{
+                width: 70%;
+            }
+            .contenedor{
+                margin-top: 25%;
+            }
+            h2,h3{
+                font-size: 20px;
+            }
+            #resultado{
+                overflow: auto;
+            }
+        }
+    </style>
+    <script src="../jQuery.js"></script>
+</head>
+<body>
+    <div id="contenedor">
+        <div class="gris">
+            <h2>Dato de entrada:</h2>
+            <input type="text" id="clave" autofocus>
+        </div>
+        <div id="botonDisparador">
+            <h2>Encriptar</h2>
+            <div class="contenedor">
+                <img src="./flecha.png">
+            </div>
+        </div>
+        <div  id="resultado">
+            <h2>Resultado:</h2>
+        </div>
+        <div id="estado">
+            <h3>Estado del requerimiento:</h3>
+        </div>
+        <div class="celeste">
+        </div>
+    </div>
+    
+    <script>
+        $("#botonDisparador").click(function() {
+            $("#resultado").empty(); //vacia el cuadro de resultado.
+            /* $("#resultado").addClass("estiloRecibiendo"); */ //le cambia provisorio de estilo del contenedor
+            $("#resultado").html("<h2>Esperando respuesta ..</h2>");//Escribe mensaje provisorio
+            $("#estado").empty(); //Vacía el div que indica el estado el requerimiento
+            $("#estado").append("<h3>Estado del requerimiento: </h3>");//adiciona html al div de estado
+            $.ajax({
+                type:"post", 
+                url: "./respuesta.php", 
+                data: { clave: $("#clave").val()},
+                success: function(respuestaDelServer,estado) {
+                    /* $("#resultado").removeClass("estiloRecibiendo"); */
+                    $("#resultado").html("<h2>Resultado: </h2><br><h4>"+respuestaDelServer+"</h4>"); 
+                    $("#estado").append("<br><h4>"+estado+"</h4>");
+                }
+            }); //cierra ajax
+        }); //cierra click
+    </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario a Json</title>
+    <style>
+        html, body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        #header, #footer{
+            height: 10%;
+            width: 100%;
+            background-color:darkcyan ;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #main{
+            background-color: gray;
+            width: 100%;
+            height: 80%;
+        }
+        #contenedor{
+            width: 100%;
+            height: 100%;
+        }
+        #abrir{
+            height: 10%;
+            width: 10%;
+            color: white;
+            background-color: dimgray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #ventanaModal{
+            position: fixed;
+            top: 20%;
+            left: 25%;
+            width: 50%;
+            height: 60%;
+            background-color: lightgray;
+            border-style: solid;
+            border-radius: 5px;
+        }
+        #encabezado{
+            width: 100%;
+            height: 10%;
+            background-color: dimgray;
+        }
+        #cerrar{
+            float:right;
+            font-size: 20px;
+            background-color:rgba(211, 211, 211, 0.486);
+            color: red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: none;
+            border-radius: 0;
+            border: none;
+            width: 5%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #cerrar:hover{
+            cursor: pointer;
+        }
+        #miform{
+            height: 90%;
+            width: 100%;
+            padding: 2%;
+            overflow: auto;
+        }
+        #miform input{
+            display: block;
+        }
+        #enviar{
+            background-color: dimgray;
+            width: 25%;
+            height: 10%;
+            margin-top: 1%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #enviar:hover{
+            background-color: gray;
+            color: white;
+            cursor: pointer;
+        }
+        .ventanaModalApagado {
+        visibility:hidden;
+        }
+        .ventanaModalPrendido {
+        visibility:visible;
+        }
+        .contenedorActivo {
+        opacity:1;
+        pointer-events: auto;
+        }
+        .contenedorDesactivado {
+        opacity:0.3;
+        pointer-events: none;
+        }
+        @media(max-width: 800px){
+            #abrir{
+                width: 25%;
+            }
+            #cerrar{
+                width: 12%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor">
+        <div id="header">
+            Header 10%
+        </div>
+        <div id="main">
+            <button id="abrir">
+                Ventana modal
+            </button>
+        </div>
+        <div id="footer">
+            Footer 10%
+        </div>
+    </div>
+
+    <div id="ventanaModal">
+        <div id="encabezado">
+            <button id="cerrar">X</button>
+        </div>
+        <form id="miform">
+            <label for="idUsuario">idUsuario:</label>
+            <input type="text" id="idUsuario" name="idUsuario" required>
+
+            <label for="login">Login:</label>
+            <input type="login" id="login" name="login" required>
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" required>
+
+            <label for="nombres">Nombres:</label>
+            <input type="text" id="nombres" name="nombres" required>
+
+            <label for="fecha">Fecha de nacimiento:</label>
+            <input type="date" id="fecha" name="fecha" required>
+            
+            <button id="enviar" type="button">ENVIAR</button>
+            <div id="resultado">
+            </div>
+        </form>
+    </div>
+</body>
+<script src="../jQuery.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#contenedor").attr("class","contenedorActivo");
+        $("#ventanaModal").attr("class","ventanaModalApagado");
+    });
+
+    $("#abrir").click(function(){
+        $("#contenedor").attr("class","contenedorDesactivado");
+        $("#ventanaModal").attr("class","ventanaModalPrendido");
+    });
+
+    $("#cerrar").click(function(){
+        $("#contenedor").attr("class","contenedorActivo");
+        $("#ventanaModal").attr("class","ventanaModalApagado");
+    });
+
+    $("#enviar").click(function(){
+
+        if(document.getElementById("miform").checkValidity()==true){
+            var confirmar = confirm("¿Estas seguro de enviar?");
+
+            if(confirmar == true){
+                $("#resultado").empty(); //vacia el cuadro de resultado.
+                $("#resultado").html("<br><h2>Esperando respuesta ..</h2>");//Escribe mensaje provisorio
+                $.ajax({
+                    type:"post", 
+                    url: "./respuesta.php", 
+                    data: {
+                        idUsuario: $("#idUsuario").val(),
+                        login: $("#login").val(),
+                        apellido: $("#apellido").val(),
+                        nombres: $("#nombres").val(),
+                        fecha: $("#fecha").val(),
+                    },
+                    success: function(respuestaDelServer,estado) {
+                        $("#resultado").html(respuestaDelServer);
+                    }
+                }); //cierra ajax
+            }
+            else{
+                document.getElementById("miform").reset();
+            }
+        }
+    });
+</script>
+</html>

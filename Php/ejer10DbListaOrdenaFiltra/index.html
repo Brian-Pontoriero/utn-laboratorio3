@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Base de datos: Lista, ordena y filtra</title>
+  <style>
+    html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      position: absolute;
+      top: 2%;
+      left: 18%;
+      font-size:1.8em;
+    }
+
+    #contenedor {
+      height: 80%;
+      width: 50%;
+      float: right;
+      margin-top: 0.5%;
+    }
+
+    #contenedor button {
+      width: 30%;
+      height: 100%;
+      background-color: whitesmoke;
+      margin-right: 0.5%;
+      float: right;
+    }
+
+    #contenedor div {
+      width: 35%;
+      height: 100%;
+      padding-right: 0.5%;
+      float: right;
+    }
+
+    #contenedor label {
+      font-size: medium;
+    }
+
+    #orden {
+      width: 100%;
+      height: 45%;
+    }
+
+    header {
+      height: 10%;
+      width: 100%;
+      background-color: lightyellow;
+    }
+
+    main {
+      width: 100%;
+      height: 80%;
+      overflow: auto;
+      background-color: darkgray;
+      margin: 0;
+      padding: 0;
+    }
+
+    footer {
+      background-color: lightyellow;
+      width: 100%;
+      height: 10%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    table {
+      width: 100%;
+      height: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      position: sticky;
+      top: 0;
+    }
+
+    th {
+      background-color: coral;
+      border-style: solid;
+      border-color: rgb(216, 120, 56);
+      border-width: 2px;
+      padding: 1%;
+    }
+
+    tbody td {
+      padding: 1.5%;
+    }
+
+    tbody tr:nth-child(odd) {
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 1200px) {
+      [campo-dato="saldoStock"] {
+        display: none;
+      }
+    }
+
+    [campo-dato="codArt"],
+    [campo-dato="familia"],
+    [campo-dato="um"],
+    [campo-dato="descripcion"],
+    [campo-dato="fechaAlta"] {
+      width:calc(100%/6);
+    }
+
+    .input-field, .select-field {
+      width: 100%;
+    }
+
+    thead th:hover, header button{
+      cursor: pointer;
+    }
+    .left_div{
+      position: absolute;
+      top: 40%;
+      left: 2%;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Artículos</h1>
+    <div id="contenedor">
+      <button id="vaciar">Vaciar datos</button>
+      <button id="cargar">Cargar datos</button>
+      <div>
+        <label for="orden">Orden:</label>
+        <input type="text" id="orden" readonly>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th campo-dato="codArt" id="th_articulos_codArt">
+            Cód. Art
+          </th>
+          <th campo-dato="familia" id="th_articulos_familia">
+              Familia
+          </th>
+          <th campo-dato="um" id="th_articulos_um">
+              UM
+          </th>
+          <th campo-dato="descripcion" id="th_articulos_descripcion">
+              Descripción
+          </th>
+          <th campo-dato="fechaAlta" id="th_articulos_fechaAlta">
+              Fecha alta
+          </th>
+          <th campo-dato="saldoStock" id="th_articulos_saldoStock">
+              Saldo stock
+          </th>
+        </tr>
+        <tr>
+          <td>
+            <input type="text" campo-dato="codArt" class="input-field" id="f_articulos_codArt">
+          </td>
+          <td>
+            <select campo-dato="familia" class="select-field" id="f_articulos_familia">
+            </select>
+          </td>
+          <td>
+            <input type="text" campo-dato="um" class="input-field" id="f_articulos_um">
+          </td>
+          <td>
+            <input type="text" campo-dato="descripcion" class="input-field" id="f_articulos_descripcion">
+          </td>
+          <td>
+            <input type="text" campo-dato="fechaAlta" class="input-field" id="f_articulos_fechaAlta">
+          </td>
+        </tr>
+      </thead>
+      <tbody id="tbDatos">
+      </tbody>
+    </table>
+  </main>
+  <footer>
+    <div id="totalRegistros" class="left_div">
+    </div>    
+    Pie
+  </footer>
+</body>
+
+
+<script src="../jQuery.js"></script>
+<script>
+
+  $(document).ready(function() {
+    $("#orden").val("codArt"); //solo cargo esta variable orden
+    cargarDesplegable();
+  }); //cierro ready
+
+  $("#th_articulos_codArt" ).click(function() {
+    $("#orden").val("codArt");
+  });
+
+  $("#th_articulos_familia" ).click(function() {
+    $("#orden").val("familia");
+  });
+
+  $("#th_articulos_um" ).click(function() {
+    $("#orden").val("um"); 
+  });
+
+  $("#th_articulos_descripcion" ).click(function() {
+    $("#orden").val("descripcion"); 
+  });
+
+  $("#th_articulos_fechaAlta" ).click(function() {
+    $("#orden").val("fechaAlta"); 
+  });
+
+  $("#th_articulos_saldoStock" ).click(function() {
+    $("#orden").val("saldoStock"); 
+  });
+
+  $("#cargar").click(function(){
+    $("#tbDatos").empty();
+    cargaTabla();
+  });
+
+  $("#vaciar").click(function(){
+    $("#tbDatos").empty();
+  });
+  
+  function cargaTabla() {
+
+    $("#tbDatos").empty();
+    $("#tbDatos").html("<p>Esperando respuesta ..</p>");
+
+    var objAjax = $.ajax({
+      type:"get", 
+      url:"./salidaJsonArticulos.php",
+      data: {
+        orden: $("#orden").val(),
+        f_articulos_codArt: $("#f_articulos_codArt").val(),
+        f_articulos_familia: $("#f_articulos_familia").val(),
+        f_articulos_um: $("#f_articulos_um").val(),
+        f_articulos_descripcion: $("#f_articulos_descripcion").val(),      
+        f_articulos_fechaAlta:$("#f_articulos_fechaAlta").val()
+      },
+      success: function(respuestaDelServer,estado) {
+        alert(respuestaDelServer);
+        $("#tbDatos").empty();
+        
+        var objJson=JSON.parse(respuestaDelServer);
+        
+        objJson.articulos.forEach(function(argValor,argIndice) { 
+          var objTr= document.createElement("tr");
+          var objTd=document.createElement("td");
+          
+          /* objTd.setAttribute("classname","estilo"); */
+          objTd.setAttribute("campo-dato","codArt");
+          objTd.innerHTML=argValor.codArt;
+          objTr.appendChild(objTd);
+
+          objTd=document.createElement("td");
+          objTd.setAttribute("campo-dato","familia");
+          objTd.innerHTML=argValor.familia;
+          objTr.appendChild(objTd);
+          
+          objTd=document.createElement("td");
+          objTd.setAttribute("campo-dato","um");
+          objTd.innerHTML=argValor.um;
+          objTr.appendChild(objTd);
+
+          objTd=document.createElement("td");
+          objTd.setAttribute("campo-dato","descripcion");
+          objTd.innerHTML=argValor.descripcion;
+          objTr.appendChild(objTd);
+
+          objTd=document.createElement("td");
+          objTd.setAttribute("campo-dato","fechaAlta");
+          objTd.innerHTML=argValor.fechaAlta;
+          objTr.appendChild(objTd);
+
+          objTd=document.createElement("td");
+          objTd.setAttribute("campo-dato","saldoStock");
+          objTd.innerHTML=argValor.saldoStock;
+          objTr.appendChild(objTd);
+
+          document.getElementById("tbDatos").appendChild(objTr);
+        });//cierra el forEach
+        
+        $("#totalRegistros").html("Nro de registros: " + objJson.articulos.length);
+      }//cierra funcion asignada al success
+    }); //cierra objeto de parametros y funcion ajax
+  }
+
+  function cargarDesplegable(){
+    $.ajax({
+      type: "get",
+      url:"./familias.php",
+      success: function(respuestaDelServer){
+        alert(respuestaDelServer);
+        var objJson = JSON.parse(respuestaDelServer);
+        
+        objJson.familias.forEach(function(argValor, argIndice){
+          var objOpcion = document.createElement("option");
+          objOpcion.innerHTML = argValor.nombre;
+          document.getElementById("f_articulos_familia").appendChild(objOpcion);
+        });
+      }
+    });
+
+    var emptyOption = document.createElement("option");
+    emptyOption.value = "";
+    emptyOption.selected = true;
+    document.getElementById("f_articulos_familia").appendChild(emptyOption);
+  }
+</script>
+</html>
