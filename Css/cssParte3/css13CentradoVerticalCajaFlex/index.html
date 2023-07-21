@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centrado vertical caja flex</title>
+    <style>
+        html,body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+
+        }
+        img {
+            height: 220px;
+            width: 300px;
+            margin: 5%;
+        }
+        .contenedor {
+            background-color: lightyellow;
+            height:auto;
+            width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <img src="./canada.jpg" alt="">
+        <img src="./canada.jpg" alt="">
+        <img src="./canada.jpg" alt="">
+        <img src="./canada.jpg" alt="">
+    </div>
+</body>
+</html>

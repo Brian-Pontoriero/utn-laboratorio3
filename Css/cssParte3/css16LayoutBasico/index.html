@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout Basico</title>
+
+    <style>
+      * {
+        font-size: 13px;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+      }
+      body {
+        height: 100%;
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+      }
+      header {
+        height: 15%;
+        width: 100%;
+        padding-left: 0.5%;
+        background-color: gray;
+      }
+      nav {
+        height: 75%;
+        width: 18%;
+        background-color: coral;
+        float: left;
+      }
+      main {
+        height: 75%;
+        width: 82%;
+        background-color: whitesmoke;
+        overflow: auto;
+        float: left;
+      }
+      main div {
+        margin-top: 3%;
+        margin-left: 2%;
+        margin-bottom: 5%;
+      }
+      footer {
+        height: 10%;
+        width: 100%;
+        background-color: gray;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        clear: both;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+      nav h1 {
+        display: flex;
+        justify-content: center;
+        margin-top: 20%;
+        margin-bottom: 20%;
+      }
+      .contenedor{
+        background-color: rgb(184, 181, 181);
+        width: 80%;
+        height: 30%;
+        margin-left: 10%;
+        margin-right: 10%;
+      }
+      nav div a{
+        text-decoration: none;
+        color: rgb(97, 111, 125);
+        font-weight: bold;
+      }
+
+      .contenedor2{
+        width: 100%;
+        height: 25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      a:hover{
+        color: whitesmoke;  
+      }
+      .contenedor2:hover{
+        background-color: gray;
+      }
+
+      @media(max-width:600px){
+        body {
+          width: 100%;
+          margin: 0;
+        }
+        * {
+          font-size: 15px;
+        }
+        .contenedor{
+          margin: 0;
+          width: 100%;
+        }
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Titulos principal de la página 1</h1>
+    </header>
+    <nav>
+      <h1>Menu</h1>
+      <div class="contenedor">
+        <a href="/Html/index.html">
+          <div class="contenedor2">
+            HTML
+          </div>
+        </a>
+        <a href="/Css/index.html">
+          <div class="contenedor2">
+            CSS
+          </div>
+        </a>        
+        <a href="/Jscript/index.html">
+          <div class="contenedor2">
+            JSCRIPT
+          </div>
+        </a>
+        <a href="/Php/index.html">
+          <div class="contenedor2">
+            PHP
+          </div>
+        </a>
+      </div>
+    </nav>
+    <main>
+      <div>
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div y superando
+        el alto del mismo
+        aaaaaaaaaaabbbbbbbcccccccdddddddeeeeeeeefffffffffffggggggggggggghhhhhhhhhhhiiiiiiiiiiiiijjjjjjjjjjjjkkkkkkkkkk<br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+      </div>
+      <div>
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div y superando
+        el alto del mismo
+        aaaaaaaaaaabbbbbbbcccccccdddddddeeeeeeeefffffffffffggggggggggggghhhhhhhhhhhiiiiiiiiiiiiijjjjjjjjjjjjkkkkkkkkkk<br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+        El contenido puede crecer indefinidamente agrandando el div <br />
+      </div>
+    </main>
+    <footer>
+      <h1>Pie de página</h1>
+    </footer>
+  </body>
+</html>

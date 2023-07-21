@@ -1,0 +1,19 @@
+h1 {
+    font-size: 30px;
+    color: darkblue;
+    text-align: center;
+    background-color: aquamarine;
+  }
+  body {
+    font-size: 25px;
+  }
+  p {
+    text-align: left;
+    font-size: 1em;
+    color: blue;
+    font-style: italic;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-width: thin;
+    border-color: blue;
+  }

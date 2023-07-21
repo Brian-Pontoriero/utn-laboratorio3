@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Divs internos en columnas</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-size: 15px;
+        box-sizing: border-box;
+      }
+      h1 {
+        font-size: 1.2em;
+      }
+      img {
+        max-width: 100%;
+        max-height: 100%;
+        margin-top: 5%;
+      }
+      .contenedor {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        background-color: lightyellow;
+        float: left;
+      }
+      .caja {
+        background-color: skyblue;
+        width: 200px;
+        float: left;
+        margin: 0.5%;
+        padding: 3%;
+      }
+      @media (max-width: 515px) {
+        .caja {
+          background-color: yellow;
+          width: 220px;
+          float: left;
+          margin: 0.5%;
+          padding: 3%;
+          font-size: 1.1em;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="contenedor">
+      <h1>Encolumnado sin tablas</h1>
+      <div class="caja">
+        Artículo 1. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna. La siguiente imagen
+        queda marginada automáticamente y ocupa el máximo ancho posible dentro
+        de la columna independientemente del ancho real de la foto. Obviamente
+        el tamaño real debería ser mayor que el máximo posible previsto en el
+        mejor de los casos (monitor de alta resolución).
+        <img src="./relax.jpg" alt="" />
+      </div>
+      <div class="caja">
+        Artículo 2. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna. Datos para incluir en
+        esta columna.
+      </div>
+      <div class="caja">
+        Artículo 3. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna.
+      </div>
+      <div class="caja">
+        Artículo 4. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna.
+      </div>
+      <div class="caja">
+        Artículo 5. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna.
+      </div>
+      <div class="caja">
+        Artículo 6. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna.
+        <img src="./zorro.jpg" alt="" />
+      </div>
+      <div class="caja">
+        Artículo 7. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna.
+      </div>
+      <div class="caja">
+        Artículo 8. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna. Datos para incluir en
+        esta columna. Datos para incluir en esta columna.
+      </div>
+    </div>
+  </body>
+</html>

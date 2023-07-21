@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Divs internos absolutos</title>
+    <style>
+      * {
+        font-size: 15px;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        font-size: 1.25em;
+      }
+      img {
+        width: 125px;
+        height: 210px;
+      }
+      .contenedor {
+        position: relative;
+        background-color: skyblue;
+        width: 90vw;
+        height: 90vw;
+        margin-left: 5%;
+        margin-right: 5%;
+      }
+      #interno1 {
+        background-color: lightseagreen;
+        position: absolute;
+        width: 30%;
+        height: 30%;
+        top: 10%;
+        left: 10%;
+        overflow: auto;
+      }
+      #interno2 {
+        background-color: lightgreen;
+        position: absolute;
+        transform: rotate(10deg);
+        width: 37%;
+        height: 37%;
+        bottom: 10%;
+        right: 10%;
+        float: left;
+        overflow: auto;
+      }
+      #interno3 {
+        background-color:lightslategrey ;
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        opacity: 0.5;
+        z-index: 10;
+        overflow: auto;
+        width: 50%;
+        height: 50%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="contenedor">
+      <h1>
+        Estructura de posicionamiento absoluto pero adaptable al medio de
+        presentación.
+      </h1>
+      <div id="interno1">
+        <h1>Contenedor interno 1.</h1>
+        asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf
+        asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf
+        asdf asdf asdf asdf asdf asdf asdf asdf
+      </div>
+      <div id="interno2">
+        <h1>Contenedor interno 2.</h1>
+        <img src="./lago.jpg">
+        <img src="./lago.jpg">
+        <img src="./lago.jpg">
+        <img src="./lago.jpg">
+      </div>
+      <div id="interno3">
+        <h1>Contenedor interno 3.</h1>
+        asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf
+        asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf
+        asdf asdf asdf asdf asdf asdf asdf asdf
+      </div>
+    </div>
+  </body>
+</html>

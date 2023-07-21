@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Responsivo</title>
+    <style>
+        html {
+            margin:0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100%;
+            width: 90%;
+            margin-left: 5%;
+            margin-right: 5%;
+            border-style: solid;
+            border-width: 2px;
+            border-color: black;
+            box-sizing: border-box;
+        }
+        * {
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 15px;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            background-color: orangered;
+            height: 15%;
+            width: 100%;
+            display: block;
+        }
+        main{
+            background-color: lightgrey;
+            width: 100%;
+            height: 75%;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            overflow: auto;
+        }
+        
+        footer{
+            background-color: orangered;
+            height: 10%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        h1{
+            font-size: 1.6em;
+        }
+        header h1{
+            width: 100%;
+            height: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .caja{
+            float: left;
+            background-color: orange;
+            width: 25%;
+            height: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .contenedorMain {
+            font-size:1.15em;
+            padding: 1%;
+            display: block;
+        }
+        a div{
+            font-size: 1.8em;
+            color:darkslategrey;
+        }
+        a div:hover{
+            background-color: gray;
+            color: white;
+        }
+        
+        img{
+            width: 100%;
+            height:100%;
+        }
+        #inclinada {
+            height: 150px;
+            width: 220px;
+            transform: rotate(15deg);
+        }
+        .contenedorImagenes{
+            position: relative;
+            height: 200px;
+            width: 200px;
+            transform: translateX(-50%);  
+        }
+        #img1{
+            position: absolute;
+            z-index: 1;
+        }
+        #img2{
+            position: absolute;
+            z-index: 2;
+            opacity: 0.5;
+        }
+
+        @media (max-width:600px){
+            body{
+                margin: 0;
+                width: 100%;
+            }
+            header{
+                height: 30%;
+            }
+            main{
+                height: 60%;
+            }
+            header h1{
+                height: 35%;
+            }
+            .contenedorHeader{
+                width: 100%;
+                height: 65%;
+                display: block;
+                overflow: auto;
+            }
+            .caja{
+                width: 100%;
+                font-size: 2.5em;
+            }
+            .contenedorMain{
+                font-size: 20px;
+            }
+        }
+
+        @media(max-width:550px){
+            .contenedorMain{
+                width: 100%;
+                font-size:30px;
+                padding-left: 12%;
+            }
+            #inclinada{
+                height: 250px;
+                width: 320px;
+            }
+            .contenedorImagenes{
+                height: 300px;
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Título principal de la página</h1>
+            <div class="contenedorHeader">
+                <a href="/Html/index.html">
+                    <div class="caja">
+                      HTML
+                    </div>
+                  </a>
+                  <a href="/Css/index.html">
+                      <div class="caja">
+                      CSS
+                    </div>
+                  </a>        
+                  <a href="/Jscript/index.html">
+                    <div class="caja">
+                      JSCRIPT
+                    </div>
+                  </a>
+                  <a href="/Php/index.html">
+                    <div class="caja">
+                      PHP
+                    </div>
+                  </a>
+            </div>
+    </header>
+    <main>
+        <div class="contenedorMain">
+            11 <br> 
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfa <br>
+            11 <br> 
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfa <br>
+        </div>
+        <div class="contenedorMain">
+            12 <br> 
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfa asdf <br>
+            <img src="./paisaje.jpg" id="inclinada">
+        </div>
+        <div class="contenedorMain">
+            13 <br> 
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfa <br>
+            13 <br> 
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfa <br>
+        </div>
+        <div class="contenedorMain">
+            14 <br> 
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfa <br>
+            14 <br> 
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfa <br>
+        </div>
+        <div class="contenedorMain">
+            15 <br> 
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfasdf asdf asdfasdfas <br>
+            asdfa <br>
+            <div class="contenedorImagenes">
+                <img src="./perro-globo.png" id="img1">
+                <img src="./globos.png" id="img2">
+            </div>
+        </div>
+        </div>
+    </main>
+    <footer>
+        <h1>Pie de página</h1>
+    </footer>
+</body>
+</html>

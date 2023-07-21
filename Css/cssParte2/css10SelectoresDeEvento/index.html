@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Selectores de evento</title>
+    <style>
+      * {
+        font-size: 12px;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      h1{
+        font-size: 2.3em;
+        margin-top: 2%;
+        margin-bottom: 2%;
+      }
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+      a {
+        text-decoration: none;
+      }
+      .contenedor {
+        background-color: skyblue;
+        width: 90vw;
+        height: 100vh;
+        margin-left: 5%;
+        margin-right: 5%;
+      }
+      .botonOpcion {
+        background-color: gray;
+        height: 40px;
+        width: 12%;
+        float: left;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5em;
+        margin-bottom: 5%;
+      }
+      .botonOpcion:hover {
+        background-color: blue;
+        color: white;
+      }
+
+      .botonOpcion:active {
+        background-color: red;
+        color: white;
+      }
+
+      label {
+        clear: both;
+        display: block;
+        font-size: 1.3em;
+      }
+
+      input {
+        width: 150px;
+      }
+      input:focus {
+        background-color: #11111111;
+      }
+      .contImag{
+        width: 100px;
+        height: 100px;
+        border-style: solid;
+        border-width: 2px;
+        float: left;
+      }
+      .contImag:active{
+        width: 50%;
+        height: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="contenedor">
+      <a href="./respuesta1.html"><div class="botonOpcion">Opción 1.</div> </a>
+
+      <a href="./respuesta2.html"><div class="botonOpcion">Opción 2.</div> </a>
+
+      <a href="./respuesta3.html"><div class="botonOpcion">Opción 3.</div> </a>
+
+      <label for="ape">Apellido:</label>
+      <input type="text" id="ape" />
+      <label for="nom">Nombres:</label>
+      <input type="text" id="nom" />
+      <h1>Expandir la imagen al 50% del contenedor padre con un click</h1>
+      <div class="contImag">
+        <img src="./relax.jpg" alt="">
+      </div>
+      <div class="contImag">
+        <img src="./arbol.jpg" alt="">
+      </div>
+      <div class="contImag">
+        <img src="./camaleon.jpg" alt="">
+      </div>
+      <div class="contImag">
+        <img src="./zorro.jpg" alt="">
+      </div>
+    </div>
+  </body>
+</html>

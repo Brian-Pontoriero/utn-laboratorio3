@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Centrado y padding</title>
+    <style>
+      body {
+        font-size: 23px;
+      }
+      h1 {
+        font-size: 2em;
+      }
+      .elementoCentrado {
+        margin: auto;
+        width: 50%;
+        background-color: lightblue;
+      }
+      .elementoCentrado2 {
+        margin: auto;
+        width: 50%;
+        background-color: lightgreen;
+        padding-left: 10%;
+        padding-right: 10%;
+      }
+      .elementoCentrado3 {
+        margin: auto;
+        width: 50%;
+        background-color: lightyellow;
+        padding-left: 10%;
+        padding-right: 10%;
+        box-sizing:border-box;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Los siguientes elementos tienen un ancho del 50% de la ventana</h1>
+    </header>
+    <main>
+      <div class="elementoCentrado">
+        Texto en interior <br />
+        Texto en interior <br />
+        Texto en interior <br />
+        Texto en interior <br />
+        Texto en interior <br />
+        Texto en interior <br />
+      </div>
+      <div class="elementoCentrado2">
+        Texto en interior con padding y sin box_sizing <br />
+        Texto en interior con padding y sin box_sizing <br />
+        Texto en interior con padding y sin box_sizing <br />
+        Texto en interior con padding y sin box_sizing <br />
+        Texto en interior con padding y sin box_sizing <br />
+      </div>
+      <div class="elementoCentrado3">
+        Texto en interior con padding y con box-sizing <br />
+        Texto en interior con padding y con box-sizing <br />
+        Texto en interior con padding y con box-sizing <br />
+        Texto en interior con padding y con box-sizing <br />
+        Texto en interior con padding y con box-sizing <br />
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+</html>
